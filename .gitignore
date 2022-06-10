@@ -1,8 +1,9 @@
 .DS_Store
 .init.el.~undo-tree~
-..gitignore~undo-tree~
+..gitignore.~undo-tree~
 .cache
 .lsp-session-v1
 auto-save-list/
 projects
 straight/
+eshell/
