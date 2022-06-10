@@ -1,0 +1,18 @@
+ls
+git init
+git remote add origin https://github.com/viniciustozzi/emacs-config.git
+git branch -M main
+git push -u origin main
+error: failed to push some refs to 'https://github.com/viniciustozzi/emacs-config.git'
+error: failed to push some refs to 'https://github.com/viniciustozzi/emacs-config.git'
+git push -u origin main
+git status
+git add .
+ls
+git commit -m "initial commit"
+git status
+git push -u origin main
+git status
+error: failed to push some refs to 'https://github.com/viniciustozzi/emacs-config.git'
+rm projects ..gitignore.\~undo-tree\~ auto-save-list/
+rm -rf projects ..gitignore.\~undo-tree\~ auto-save-list/
