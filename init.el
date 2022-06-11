@@ -299,6 +299,16 @@ folder, otherwise delete a word"
   (leader-keys
     "b" '(:ignore t :which-key "Buffer")
     "bk" '(kill-current-buffer :which-key "Kill Buffer"))
+  (leader-keys
+    "w" '(:ignore t :which-key "Window")
+    "wl" '(evil-window-right :which-key "Jump Right")
+    "wh" '(evil-window-left :which-key "Jump Left")
+    "wj" '(evil-window-down :which-key "Jump Down")
+    "wk" '(evil-window-up :which-key "Jump Up"))
+  (leader-keys
+    "f" '(:ignore t :which-key "File")
+    "ff" '(find-file-at-point :which-key "Find File")
+    "fs" '(save-buffer :which-key "Save File"))
   )
 
 ;;;---------LSP----------------
