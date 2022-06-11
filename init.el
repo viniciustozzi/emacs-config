@@ -289,12 +289,16 @@ folder, otherwise delete a word"
     :prefix "SPC"
     :global-prefix "C-SPC")
 
+  (general-define-key
+   :states 'normal
+   "<S-K>" 'lsp-describe-thing-at-point)
+
   (leader-keys
     "." '(find-file-at-point :which-key "Find File"))
   (leader-keys
     "h" '(:ignore t :which-key "Help")
     "hf" '(describe-function :which-key "Function")
-    "hv" '(describe-function :which-key "Variable")
+    "hv" '(describe-variable :which-key "Variable")
     "hk" '(describe-key :which-key "Key"))
   (leader-keys
     "b" '(:ignore t :which-key "Buffer")
@@ -309,6 +313,9 @@ folder, otherwise delete a word"
     "f" '(:ignore t :which-key "File")
     "ff" '(find-file-at-point :which-key "Find File")
     "fs" '(save-buffer :which-key "Save File"))
+  (leader-keys
+    "c" '(:ignore t :which-key "Code")
+    "cd" '(lsp-describe-thing-at-point  :which-key "Documentation"))
   )
 
 ;;;---------LSP----------------
