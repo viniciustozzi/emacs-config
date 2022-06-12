@@ -330,6 +330,7 @@ folder, otherwise delete a word"
          (clojure-mode . lsp)
 	 (rust-mode . lsp)
 	 (c-mode . lsp)
+	 (go-mode . lsp)
          ;; if you want which-key integration
          (lsp-mode . lsp-enable-which-key-integration))
   :commands lsp)
@@ -417,6 +418,9 @@ folder, otherwise delete a word"
 
 ;;;---------RUST---------------
 (use-package rustic)
+
+;;;---------GO-----------------
+(straight-use-package 'go-mode)
 
 ;;;---------CLOJURE------------
 (straight-use-package 'cider)
