@@ -424,6 +424,10 @@ folder, otherwise delete a word"
 (require 'cider)
 (require 'clojure-mode)
 
+;;;---------MAGIT-------------
+(straight-use-package 'magit)
+(straight-use-package 'evil-magit)
+
 ;;;---------CUSTOM------------
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
