@@ -293,6 +293,8 @@ folder, otherwise delete a word"
    :states 'normal
    "<S-K>" 'lsp-describe-thing-at-point)
 
+  (global-set-key (kbd "C-u") #'evil-scroll-up)
+
   (leader-keys
     "." '(find-file-at-point :which-key "Find File"))
   (leader-keys
@@ -302,7 +304,8 @@ folder, otherwise delete a word"
     "hk" '(describe-key :which-key "Key"))
   (leader-keys
     "b" '(:ignore t :which-key "Buffer")
-    "bk" '(kill-current-buffer :which-key "Kill Buffer"))
+    "bk" '(kill-current-buffer :which-key "Kill Buffer")
+    "bi" '(ibuffer :which-key "ibuffer"))
   (leader-keys
     "w" '(:ignore t :which-key "Window")
     "wl" '(evil-window-right :which-key "Jump Right")
