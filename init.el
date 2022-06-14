@@ -307,6 +307,7 @@ folder, otherwise delete a word"
    "<S-K>" 'lsp-describe-thing-at-point)
 
   (global-set-key (kbd "C-u") #'evil-scroll-up)
+  (global-set-key (kbd "C-M-l") #'lsp-format-buffer)
 
   (leader-keys
     "." '(find-file-at-point :which-key "Find File"))
@@ -322,7 +323,8 @@ folder, otherwise delete a word"
   (leader-keys
     "c" '(:ignore t :which-key "Code")
     "cj" '(lsp-find-definition :which-key "Jump to Definition")
-	"cf" '(lsp-find-references :which-key "Find References"))
+    "cf" '(lsp-find-references :which-key "Find References")
+    "cl" '(lsp-format-buffer :which-key "Format Buffer"))
   (leader-keys
     "e" '(:ignore t :which-key "Eval")
     "ee" '(cider-eval-last-sexp :which-key "Eval Last S-Exp")
