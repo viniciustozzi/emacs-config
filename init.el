@@ -66,6 +66,7 @@
   (exec-path-from-shell-initialize))
 
 
+(setq tab-width 4)
 ;;;-------Evil Mode---------
 (straight-use-package 'evil)
 (straight-use-package 'undo-tree)
@@ -284,6 +285,8 @@ folder, otherwise delete a word"
 				 corfu-auto nil)
             (corfu-mode)))
 
+(straight-use-package 'company)
+
 ;;;---------WHICH-KEY----------
 (straight-use-package 'which-key)
 (require 'which-key)
@@ -316,6 +319,10 @@ folder, otherwise delete a word"
     "b" '(:ignore t :which-key "Buffer")
     "bk" '(kill-current-buffer :which-key "Kill Buffer")
     "bi" '(ibuffer :which-key "ibuffer"))
+  (leader-keys
+    "c" '(:ignore t :which-key "Code")
+    "cj" '(lsp-find-definition :which-key "Jump to Definition")
+	"cf" '(lsp-find-references :which-key "Find References"))
   (leader-keys
     "e" '(:ignore t :which-key "Eval")
     "ee" '(cider-eval-last-sexp :which-key "Eval Last S-Exp")
@@ -356,9 +363,6 @@ folder, otherwise delete a word"
 (use-package flycheck
   :ensure t
   :init (global-flycheck-mode))
-
-;;For completion
-(use-package company)
 
 ;;For debugging
 (use-package dap-mode)
@@ -436,6 +440,8 @@ folder, otherwise delete a word"
 
 ;;;---------GO-----------------
 (straight-use-package 'go-mode)
+(add-hook 'go-mode-hook (lambda () (setq tab-width 4)))
+(add-hook 'go-mode-hook (lambda () (company-mode 0)))
 
 ;;;---------CLOJURE------------
 (straight-use-package 'cider)
