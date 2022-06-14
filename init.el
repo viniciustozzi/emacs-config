@@ -56,6 +56,16 @@
 
 (add-hook 'after-save-hook #'executable-make-buffer-file-executable-if-script-p)
 
+;;System variables
+(straight-use-package 'exec-path-from-shell)
+
+(when (memq window-system '(mac ns x))
+  (exec-path-from-shell-initialize))
+
+(when (daemonp)
+  (exec-path-from-shell-initialize))
+
+
 ;;;-------Evil Mode---------
 (straight-use-package 'evil)
 (straight-use-package 'undo-tree)
@@ -306,6 +316,11 @@ folder, otherwise delete a word"
     "b" '(:ignore t :which-key "Buffer")
     "bk" '(kill-current-buffer :which-key "Kill Buffer")
     "bi" '(ibuffer :which-key "ibuffer"))
+  (leader-keys
+    "e" '(:ignore t :which-key "Eval")
+    "ee" '(cider-eval-last-sexp :which-key "Eval Last S-Exp")
+    "eb" '(cider-eval-buffer :which-key "Eval Buffer")
+    "ea" '(cider-eval-all-files :which-key "Eval all Files"))
   (leader-keys
     "w" '(:ignore t :which-key "Window")
     "wl" '(evil-window-right :which-key "Jump Right")
