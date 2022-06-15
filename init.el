@@ -322,9 +322,11 @@ folder, otherwise delete a word"
     "bi" '(ibuffer :which-key "ibuffer"))
   (leader-keys
     "c" '(:ignore t :which-key "Code")
-    "cj" '(lsp-find-definition :which-key "Jump to Definition")
+    "cd" '(lsp-find-definition :which-key "Jump to Definition")
     "cf" '(lsp-find-references :which-key "Find References")
-    "cl" '(lsp-format-buffer :which-key "Format Buffer"))
+    "ck" '(lsp-describe-thing-at-point  :which-key "Documentation")
+    "cl" '(lsp-format-buffer :which-key "Format Buffer")
+	"cr" '(lsp-rename :which-key "Rename"))
   (leader-keys
     "e" '(:ignore t :which-key "Eval")
     "ee" '(cider-eval-last-sexp :which-key "Eval Last S-Exp")
@@ -340,9 +342,6 @@ folder, otherwise delete a word"
     "f" '(:ignore t :which-key "File")
     "ff" '(find-file-at-point :which-key "Find File")
     "fs" '(save-buffer :which-key "Save File"))
-  (leader-keys
-    "c" '(:ignore t :which-key "Code")
-    "cd" '(lsp-describe-thing-at-point  :which-key "Documentation"))
   )
 
 ;;;---------LSP----------------
