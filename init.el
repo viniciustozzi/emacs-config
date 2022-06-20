@@ -460,6 +460,7 @@ folder, otherwise delete a word"
 (straight-use-package 'clojure-mode)
 (require 'cider)
 (require 'clojure-mode)
+(add-hook 'clojure-mode-hook #'smartparens-mode)
 
 ;;;---------JANEGT------------
 
@@ -471,11 +472,18 @@ folder, otherwise delete a word"
 ))
 
 (require 'janet-mode)
+(add-hook 'janet-mode-hook #'smartparens-mode)
 
 
 ;;;---------MAGIT-------------
 (straight-use-package 'magit)
 (straight-use-package 'evil-magit)
+
+;;---------SMARTPARENS--------
+(straight-use-package 'smartparens)
+(require 'smartparens-config)
+(add-hook 'lisp-mode-hook #'smartparens-mode)
+(add-hook 'elisp-mode-hook #'smartparens-mode)
 
 ;;;---------CUSTOM------------
 (custom-set-variables
