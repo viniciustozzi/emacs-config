@@ -18,6 +18,8 @@
 (setq straight-use-package-by-default t)
 
 ;;;--------General Defaults--------
+(add-to-list 'load-path "~/.emacs.d/lisp/")
+
 ;;Disable backup files
 (setq make-backup-files nil)
 
@@ -308,6 +310,7 @@ folder, otherwise delete a word"
 
   (global-set-key (kbd "C-u") #'evil-scroll-up)
   (global-set-key (kbd "C-M-l") #'lsp-format-buffer)
+  (global-set-key (kbd "M-k") #'lsp-describe-thing-at-point)
 
   (leader-keys
     "." '(find-file-at-point :which-key "Find File"))
@@ -339,10 +342,18 @@ folder, otherwise delete a word"
     "wj" '(evil-window-down :which-key "Jump Down")
     "wk" '(evil-window-up :which-key "Jump Up"))
   (leader-keys
+    "j" '(:ignore t :which-key "Janet")
+    "jb" '(ijanet-eval-buffer :which-key "Eval Buffer")
+    "je" '(ijanet-eval-sexp-at-point :which-key "Eval Expression"))
+  (leader-keys
     "f" '(:ignore t :which-key "File")
     "ff" '(find-file-at-point :which-key "Find File")
     "fs" '(save-buffer :which-key "Save File"))
   )
+
+(defun generic-eval-buffer ()
+  (interactive
+   (cider-eval-buffer)))
 
 ;;;---------LSP----------------
 (use-package lsp-mode
@@ -450,6 +461,18 @@ folder, otherwise delete a word"
 (require 'cider)
 (require 'clojure-mode)
 
+;;;---------JANEGT------------
+
+(straight-use-package
+ '(ijanet
+   :type git
+   :host github
+   :repo "serialdev/ijanet-mode"
+))
+
+(require 'janet-mode)
+
+
 ;;;---------MAGIT-------------
 (straight-use-package 'magit)
 (straight-use-package 'evil-magit)
@@ -461,7 +484,26 @@ folder, otherwise delete a word"
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   '("dad40020beea412623b04507a4c185079bff4dcea20a93d8f8451acb6afc8358" "e13beeb34b932f309fb2c360a04a460821ca99fe58f69e65557d6c1b10ba18c7" default)))
+   '("dad40020beea412623b04507a4c185079bff4dcea20a93d8f8451acb6afc8358" "e13beeb34b932f309fb2c360a04a460821ca99fe58f69e65557d6c1b10ba18c7" default))
+ '(ignored-local-variable-values
+   '((elisp-lint-indent-specs
+      (if-let* . 2)
+      (when-let* . 1)
+      (let* . defun)
+      (nrepl-dbind-response . 2)
+      (cider-save-marker . 1)
+      (cider-propertize-region . 1)
+      (cider-map-repls . 1)
+      (cider--jack-in . 1)
+      (cider--make-result-overlay . 1)
+      (insert-label . defun)
+      (insert-align-label . defun)
+      (insert-rect . defun)
+      (cl-defun . 2)
+      (with-parsed-tramp-file-name . 2)
+      (thread-first . 0)
+      (thread-last . 0))
+     (checkdoc-package-keywords-flag))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
