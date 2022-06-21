@@ -449,6 +449,7 @@ folder, otherwise delete a word"
 
 ;;;---------RUST---------------
 (use-package rustic)
+(add-hook 'rust-mode-hook #'smartparens-mode)
 
 ;;;---------GO-----------------
 (straight-use-package 'go-mode)
