@@ -71,19 +71,19 @@
 (setq tab-width 4)
 ;;;-------Evil Mode---------
 (straight-use-package 'evil)
-(straight-use-package 'undo-tree)
+;;(straight-use-package 'undo-tree)
 (straight-use-package 'evil-collection)
 (straight-use-package 'evil-nerd-commenter)
 
 ;; Turn on undo-tree globally
-(global-undo-tree-mode)
+;;(global-undo-tree-mode)
 
 ;; Set some variables that must be configured before loading the package
 (customize-set-variable 'evil-want-integration t)
 (customize-set-variable 'evil-want-keybinding nil)
 (customize-set-variable 'evil-want-C-i-jump nil)
 (customize-set-variable 'evil-respect-visual-line-mode t)
-(customize-set-variable 'evil-undo-system 'undo-tree)
+;;(customize-set-variable 'evil-undo-system 'undo-tree)
 
 (setq evil-want-C-u-scroll t)
 
