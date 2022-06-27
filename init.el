@@ -489,7 +489,7 @@ folder, otherwise delete a word"
 (add-hook 'elisp-mode-hook #'smartparens-mode)
 
 ;;---------ORG--------
-(straight-use-package 'org-appear)
+;;(straight-use-package 'org-appear)
 
 ;; Return or left-click with mouse follows link
 (customize-set-variable 'org-return-follows-link t)
@@ -510,8 +510,7 @@ folder, otherwise delete a word"
 (setq org-roam-mode-sections
       (list #'org-roam-backlinks-section
             #'org-roam-reflinks-section
-            ;; #'org-roam-unlinked-references-section
-            ))
+            #'org-roam-unlinked-references-section))
 
 ;;;---------CUSTOM------------
 (custom-set-variables
