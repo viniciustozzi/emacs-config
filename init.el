@@ -126,12 +126,9 @@
 (straight-use-package 'elisp-demos)
 (straight-use-package 'helpful)
 
-;; Start up the modeline after initialization is finished
-(add-hook 'after-init-hook 'doom-modeline-init)
-
 (require 'modus-themes)
 (modus-themes-load-themes)
-(modus-themes-load-vivendi)   
+(modus-themes-load-vivendi)
 
 ;; Configure `doom-modeline'
 (customize-set-variable 'doom-modeline-height 15)
@@ -321,34 +318,39 @@ folder, otherwise delete a word"
     "hk" '(describe-key :which-key "Key"))
   (leader-keys
     "b" '(:ignore t :which-key "Buffer")
-    "bk" '(kill-current-buffer :which-key "Kill Buffer")
+    "bk" '(kill-current-buffer :which-key "Kill buffer")
     "bi" '(ibuffer :which-key "ibuffer"))
   (leader-keys
     "c" '(:ignore t :which-key "Code")
-    "cd" '(lsp-find-definition :which-key "Jump to Definition")
-    "cf" '(lsp-find-references :which-key "Find References")
+    "cd" '(lsp-find-definition :which-key "Jump to definition")
+    "cf" '(lsp-find-references :which-key "Find references")
     "ck" '(lsp-describe-thing-at-point  :which-key "Documentation")
-    "cl" '(lsp-format-buffer :which-key "Format Buffer")
+    "cl" '(lsp-format-buffer :which-key "Format buffer")
 	"cr" '(lsp-rename :which-key "Rename"))
   (leader-keys
     "e" '(:ignore t :which-key "Eval")
-    "ee" '(cider-eval-last-sexp :which-key "Eval Last S-Exp")
-    "eb" '(cider-eval-buffer :which-key "Eval Buffer")
-    "ea" '(cider-eval-all-files :which-key "Eval all Files"))
+    "ee" '(cider-eval-last-sexp :which-key "Eval last s-exp")
+    "eb" '(cider-eval-buffer :which-key "Eval buffer")
+    "ea" '(cider-eval-all-files :which-key "Eval all files"))
+  (leader-keys
+	"n" '(:ignore t :which-key "Notes")
+	"nc" '(org-roam-capture :which-key "Create note")
+	"ni" '(org-roam-node-insert :which-key "Insert note")
+	"nf" '(org-roam-node-find :which-key "Find note"))
   (leader-keys
     "w" '(:ignore t :which-key "Window")
-    "wl" '(evil-window-right :which-key "Jump Right")
-    "wh" '(evil-window-left :which-key "Jump Left")
-    "wj" '(evil-window-down :which-key "Jump Down")
-    "wk" '(evil-window-up :which-key "Jump Up"))
+    "wl" '(evil-window-right :which-key "Jump right")
+    "wh" '(evil-window-left :which-key "Jump left")
+    "wj" '(evil-window-down :which-key "Jump down")
+    "wk" '(evil-window-up :which-key "Jump up"))
   (leader-keys
     "j" '(:ignore t :which-key "Janet")
-    "jb" '(ijanet-eval-buffer :which-key "Eval Buffer")
-    "je" '(ijanet-eval-sexp-at-point :which-key "Eval Expression"))
+    "jb" '(ijanet-eval-buffer :which-key "Eval buffer")
+    "je" '(ijanet-eval-sexp-at-point :which-key "Eval expression"))
   (leader-keys
     "f" '(:ignore t :which-key "File")
-    "ff" '(find-file-at-point :which-key "Find File")
-    "fs" '(save-buffer :which-key "Save File"))
+    "ff" '(find-file-at-point :which-key "Find file")
+    "fs" '(save-buffer :which-key "Save file"))
   )
 
 (defun generic-eval-buffer ()
@@ -405,7 +407,7 @@ folder, otherwise delete a word"
           treemacs-is-never-other-window           nil
           treemacs-max-git-entries                 5000
           treemacs-missing-project-action          'ask
-          treemacs-move-forward-on-expand          nil
+          treemacs-move-forward-on-expanf          nil
           treemacs-no-png-images                   nil
           treemacs-no-delete-other-windows         t
           treemacs-project-follow-cleanup          nil
@@ -485,6 +487,31 @@ folder, otherwise delete a word"
 (require 'smartparens-config)
 (add-hook 'lisp-mode-hook #'smartparens-mode)
 (add-hook 'elisp-mode-hook #'smartparens-mode)
+
+;;---------ORG--------
+(straight-use-package 'org-appear)
+
+;; Return or left-click with mouse follows link
+(customize-set-variable 'org-return-follows-link t)
+(customize-set-variable 'org-mouse-1-follows-link t)
+
+;; Display links as the description provided
+(customize-set-variable 'org-descriptive-links t)
+
+;; Hide markup markers
+(customize-set-variable 'org-hide-emphasis-markers t)
+(add-hook 'org-mode-hook 'org-appear-mode)
+
+;;---------ORG-ROAM--------
+(straight-use-package 'org-roam)
+(setq org-roam-directory (file-truename "~/org"))
+(org-roam-db-autosync-mode)
+
+(setq org-roam-mode-sections
+      (list #'org-roam-backlinks-section
+            #'org-roam-reflinks-section
+            ;; #'org-roam-unlinked-references-section
+            ))
 
 ;;;---------CUSTOM------------
 (custom-set-variables
