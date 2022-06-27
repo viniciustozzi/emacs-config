@@ -131,10 +131,11 @@
 (modus-themes-load-vivendi)
 
 ;; Configure `doom-modeline'
-(customize-set-variable 'doom-modeline-height 15)
+(customize-set-variable 'doom-modeline-height 10)
 (customize-set-variable 'doom-modeline-bar-width 6)
 (customize-set-variable 'doom-modeline-minor-modes t)
 (customize-set-variable 'doom-modeline-buffer-file-name-style 'truncate-except-project)
+(doom-modeline-mode 1)
 
 ;; Make `describe-*' screens more helpful
 (require 'helpful)
@@ -500,7 +501,8 @@ folder, otherwise delete a word"
 
 ;; Hide markup markers
 (customize-set-variable 'org-hide-emphasis-markers t)
-(add-hook 'org-mode-hook 'org-appear-mode)
+
+;(add-hook 'org-mode-hook 'org-appear-mode)
 
 ;;---------ORG-ROAM--------
 (straight-use-package 'org-roam)
