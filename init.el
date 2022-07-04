@@ -334,10 +334,10 @@ folder, otherwise delete a word"
     "eb" '(cider-eval-buffer :which-key "Eval buffer")
     "ea" '(cider-eval-all-files :which-key "Eval all files"))
   (leader-keys
-	"n" '(:ignore t :which-key "Notes")
-	"nc" '(org-roam-capture :which-key "Create note")
-	"ni" '(org-roam-node-insert :which-key "Insert note")
-	"nf" '(org-roam-node-find :which-key "Find note"))
+    "n" '(:ignore t :which-key "Notes")
+    "nc" '(org-roam-capture :which-key "Create note")
+    "ni" '(org-roam-node-insert :which-key "Insert note")
+    "nf" '(org-roam-node-find :which-key "Find note"))
   (leader-keys
     "w" '(:ignore t :which-key "Window")
     "wl" '(evil-window-right :which-key "Jump right")
@@ -352,6 +352,10 @@ folder, otherwise delete a word"
     "f" '(:ignore t :which-key "File")
     "ff" '(find-file-at-point :which-key "Find file")
     "fs" '(save-buffer :which-key "Save file"))
+  (leader-keys
+    "v" '(:ignore t :which-key "vterm")
+    "vv" '(vterm :which-key "open vterm on other window")
+    "vo" '(v-term-other-window :which-key "open vterm in other window"))
   )
 
 (defun generic-eval-buffer ()
@@ -475,8 +479,8 @@ folder, otherwise delete a word"
    :repo "serialdev/ijanet-mode"
 ))
 
-(require 'janet-mode)
-(add-hook 'janet-mode-hook #'smartparens-mode)
+;(require 'janet-mode)
+;(add-hook 'janet-mode-hook #'smartparens-mode)
 
 
 ;;;---------MAGIT-------------
@@ -493,26 +497,41 @@ folder, otherwise delete a word"
 ;;(straight-use-package 'org-appear)
 
 ;; Return or left-click with mouse follows link
-(customize-set-variable 'org-return-follows-link t)
-(customize-set-variable 'org-mouse-1-follows-link t)
+;;(customize-set-variable 'org-return-follows-link t)
+;;(customize-set-variable 'org-mouse-1-follows-link t)
 
 ;; Display links as the description provided
-(customize-set-variable 'org-descriptive-links t)
+;;(customize-set-variable 'org-descriptive-links t)
 
 ;; Hide markup markers
-(customize-set-variable 'org-hide-emphasis-markers t)
+;;(customize-set-variable 'org-hide-emphasis-markers t)
 
 ;(add-hook 'org-mode-hook 'org-appear-mode)
 
-;;---------ORG-ROAM--------
-(straight-use-package 'org-roam)
-(setq org-roam-directory (file-truename "~/org"))
-(org-roam-db-autosync-mode)
+(use-package org)
 
-(setq org-roam-mode-sections
-      (list #'org-roam-backlinks-section
-            #'org-roam-reflinks-section
-            #'org-roam-unlinked-references-section))
+;;---------ORG-ROAM--------
+(use-package org-roam
+  :ensure t
+  :custom
+  (org-roam-directory (file-truename "~/org/"))
+  :bind (("C-c n l" . org-roam-buffer-toggle)
+         ("C-c n f" . org-roam-node-find)
+         ("C-c n g" . org-roam-graph)
+         ("C-c n i" . org-roam-node-insert)
+         ("C-c n c" . org-roam-capture)
+         ;; Dailies
+         ("C-c n j" . org-roam-dailies-capture-today))
+  :config
+  ;; If you're using a vertical completion framework, you might want a more informative completion interface
+  (setq org-roam-node-display-template (concat "${title:*} " (propertize "${tags:10}" 'face 'org-tag)))
+  (org-roam-db-autosync-mode)
+  ;; If using org-roam-protocol
+  (require 'org-roam-protocol))
+
+;;;---------VTERM-------------
+(use-package vterm
+    :ensure t)
 
 ;;;---------CUSTOM------------
 (custom-set-variables
