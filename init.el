@@ -525,13 +525,23 @@ folder, otherwise delete a word"
   :config
   ;; If you're using a vertical completion framework, you might want a more informative completion interface
   (setq org-roam-node-display-template (concat "${title:*} " (propertize "${tags:10}" 'face 'org-tag)))
+
+(setq org-roam-dailies-capture-templates
+      '(("d" "default" entry
+         "* %?"
+         :if-new (file+head "%<%Y-%m-%d>.org"
+                            "#+title: %<%Y-%m-%d>\n"))))
+
   (org-roam-db-autosync-mode)
+
   ;; If using org-roam-protocol
   (require 'org-roam-protocol))
 
 ;;;---------VTERM-------------
 (use-package vterm
     :ensure t)
+
+
 
 ;;;---------CUSTOM------------
 (custom-set-variables
