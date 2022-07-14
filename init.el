@@ -130,6 +130,8 @@
 (modus-themes-load-themes)
 (modus-themes-load-vivendi)
 
+(setq modus-themes-bold-constructs t)
+
 ;; Configure `doom-modeline'
 (customize-set-variable 'doom-modeline-height 10)
 (customize-set-variable 'doom-modeline-bar-width 6)
@@ -481,6 +483,10 @@ folder, otherwise delete a word"
 (straight-use-package 'magit)
 (straight-use-package 'evil-magit)
 
+;;;---------PROJECTILE-------
+(straight-use-package 'projectile)
+(projectile-mode +1)
+
 ;;---------SMARTPARENS--------
 (straight-use-package 'smartparens)
 (require 'smartparens-config)
@@ -503,6 +509,9 @@ folder, otherwise delete a word"
 (add-hook 'org-mode-hook 'org-appear-mode)
 
 (use-package org)
+
+;;;---------DEFT--------------
+(straight-use-package 'deft)
 
 ;;;---------VTERM-------------
 (straight-use-package 'vterm)
