@@ -151,15 +151,9 @@
 (require 'elisp-demos)
 (advice-add 'helpful-update :after #'elisp-demos-advice-helpful-update)
 
-;; add visual pulse when changing focus, like beacon but built-in
-;; from from https://karthinks.com/software/batteries-included-with-emacs/
-(defun pulse-line (&rest _)
-  "Pulse the current line."
-  (pulse-momentary-highlight-one-line (point)))
-
-(dolist (command '(scroll-up-command scroll-down-command
-                                     recenter-top-bottom other-window))
-  (advice-add command :after #'pulse-line))
+;;Beacon (line highlight when changing buffer/position)
+(straight-use-package 'beacon)
+(beacon-mode 1)
 
 ;;;-------COMPLETION/SEARCHING------------
 
@@ -355,7 +349,7 @@ folder, otherwise delete a word"
   (leader-keys
     "v" '(:ignore t :which-key "vterm")
     "vv" '(vterm :which-key "open vterm on other window")
-    "vo" '(v-term-other-window :which-key "open vterm in other window"))
+    "vo" '(vterm-other-window :which-key "open vterm in other window"))
   )
 
 (defun generic-eval-buffer ()
