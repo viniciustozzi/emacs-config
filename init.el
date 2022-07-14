@@ -494,54 +494,24 @@ folder, otherwise delete a word"
 (add-hook 'elisp-mode-hook #'smartparens-mode)
 
 ;;---------ORG--------
-;;(straight-use-package 'org-appear)
+(straight-use-package 'org-appear)
 
 ;; Return or left-click with mouse follows link
-;;(customize-set-variable 'org-return-follows-link t)
+(customize-set-variable 'org-return-follows-link t)
 ;;(customize-set-variable 'org-mouse-1-follows-link t)
 
 ;; Display links as the description provided
-;;(customize-set-variable 'org-descriptive-links t)
+(customize-set-variable 'org-descriptive-links t)
 
 ;; Hide markup markers
-;;(customize-set-variable 'org-hide-emphasis-markers t)
+(customize-set-variable 'org-hide-emphasis-markers t)
 
-;(add-hook 'org-mode-hook 'org-appear-mode)
+(add-hook 'org-mode-hook 'org-appear-mode)
 
 (use-package org)
 
-;;---------ORG-ROAM--------
-(use-package org-roam
-  :ensure t
-  :custom
-  (org-roam-directory (file-truename "~/org/"))
-  :bind (("C-c n l" . org-roam-buffer-toggle)
-         ("C-c n f" . org-roam-node-find)
-         ("C-c n g" . org-roam-graph)
-         ("C-c n i" . org-roam-node-insert)
-         ("C-c n c" . org-roam-capture)
-         ;; Dailies
-         ("C-c n j" . org-roam-dailies-capture-today))
-  :config
-  ;; If you're using a vertical completion framework, you might want a more informative completion interface
-  (setq org-roam-node-display-template (concat "${title:*} " (propertize "${tags:10}" 'face 'org-tag)))
-
-(setq org-roam-dailies-capture-templates
-      '(("d" "default" entry
-         "* %?"
-         :if-new (file+head "%<%Y-%m-%d>.org"
-                            "#+title: %<%Y-%m-%d>\n"))))
-
-  (org-roam-db-autosync-mode)
-
-  ;; If using org-roam-protocol
-  (require 'org-roam-protocol))
-
 ;;;---------VTERM-------------
-(use-package vterm
-    :ensure t)
-
-
+(straight-use-package 'vterm)
 
 ;;;---------CUSTOM------------
 (custom-set-variables
