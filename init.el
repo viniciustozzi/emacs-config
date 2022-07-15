@@ -334,9 +334,7 @@ folder, otherwise delete a word"
     "ea" '(cider-eval-all-files :which-key "Eval all files"))
   (leader-keys
     "n" '(:ignore t :which-key "Notes")
-    "nc" '(org-roam-capture :which-key "Create note")
-    "ni" '(org-roam-node-insert :which-key "Insert note")
-    "nf" '(org-roam-node-find :which-key "Find note"))
+    "nc" '(denote :which-key "Create note"))
   (leader-keys
     "w" '(:ignore t :which-key "Window")
     "wl" '(evil-window-right :which-key "Jump right")
@@ -357,8 +355,7 @@ folder, otherwise delete a word"
   (leader-keys
     "v" '(:ignore t :which-key "vterm")
     "vv" '(vterm :which-key "open vterm on other window")
-    "vo" '(vterm-other-window :which-key "open vterm in other window"))
-  )
+    "vo" '(vterm-other-window :which-key "open vterm in other window")))
 
 ;;;---------LSP----------------
 (use-package lsp-mode
