@@ -22,6 +22,7 @@
 
 ;;Disable backup files
 (setq make-backup-files nil)
+(auto-save-mode 0)
 
 (setq initial-scratch-message "")
 
@@ -316,14 +317,16 @@ folder, otherwise delete a word"
   (leader-keys
     "b" '(:ignore t :which-key "Buffer")
     "bk" '(kill-current-buffer :which-key "Kill buffer")
-    "bi" '(ibuffer :which-key "ibuffer"))
+    "bi" '(ibuffer :which-key "ibuffer")
+    "bf" '(consult-buffer :which-key "Find buffer"))
   (leader-keys
     "c" '(:ignore t :which-key "Code")
     "cd" '(lsp-find-definition :which-key "Jump to definition")
     "cf" '(lsp-find-references :which-key "Find references")
     "ck" '(lsp-describe-thing-at-point  :which-key "Documentation")
     "cl" '(lsp-format-buffer :which-key "Format buffer")
-	"cr" '(lsp-rename :which-key "Rename"))
+    "cs" '(consult-line :which-key "Search buffer")
+    "cr" '(lsp-rename :which-key "Rename"))
   (leader-keys
     "e" '(:ignore t :which-key "Eval")
     "ee" '(cider-eval-last-sexp :which-key "Eval last s-exp")
@@ -341,22 +344,21 @@ folder, otherwise delete a word"
     "wj" '(evil-window-down :which-key "Jump down")
     "wk" '(evil-window-up :which-key "Jump up"))
   (leader-keys
+	"g" '(magit :which-key "Magit"))
+  (leader-keys
     "j" '(:ignore t :which-key "Janet")
     "jb" '(ijanet-eval-buffer :which-key "Eval buffer")
     "je" '(ijanet-eval-sexp-at-point :which-key "Eval expression"))
   (leader-keys
     "f" '(:ignore t :which-key "File")
     "ff" '(find-file-at-point :which-key "Find file")
-    "fs" '(save-buffer :which-key "Save file"))
+    "fs" '(save-buffer :which-key "Save file")
+    "fd" '(dired-jump :which-key "Dired"))
   (leader-keys
     "v" '(:ignore t :which-key "vterm")
     "vv" '(vterm :which-key "open vterm on other window")
     "vo" '(vterm-other-window :which-key "open vterm in other window"))
   )
-
-(defun generic-eval-buffer ()
-  (interactive
-   (cider-eval-buffer)))
 
 ;;;---------LSP----------------
 (use-package lsp-mode
@@ -510,8 +512,19 @@ folder, otherwise delete a word"
 
 (use-package org)
 
-;;;---------DEFT--------------
-(straight-use-package 'deft)
+;;;---------DENOTE------------
+(straight-use-package 'denote)
+(setq denote-directory (expand-file-name "~/notes"))
+
+(require 'denote-dired)
+(add-hook 'dired-mode-hook #'denote-dired-mode)
+
+(defun my-denote-journal ()
+  "Create an entry tagged 'journal' with the date as its title."
+  (interactive)
+  (denote
+   (format-time-string "%A %e %B %Y") ; format like Tuesday 14 June 2022
+   '("journal"))) ; multiple keywords are a list of strings: '("one" "two")
 
 ;;;---------VTERM-------------
 (straight-use-package 'vterm)
