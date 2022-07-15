@@ -353,6 +353,11 @@ folder, otherwise delete a word"
     "fs" '(save-buffer :which-key "Save file")
     "fd" '(dired-jump :which-key "Dired"))
   (leader-keys
+    "d" '(:ignore t :which-key "Directory")
+    "dd" '(dired-jump :which-key "Open Dired")
+	"dc" '(make-directory :which-key "Create directory")
+	"dk" '(delete-directory :which-key "Delete directory"))
+  (leader-keys
     "v" '(:ignore t :which-key "vterm")
     "vv" '(vterm :which-key "open vterm on other window")
     "vo" '(vterm-other-window :which-key "open vterm in other window")))
