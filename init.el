@@ -342,7 +342,7 @@ folder, otherwise delete a word"
     "wj" '(evil-window-down :which-key "Jump down")
     "wk" '(evil-window-up :which-key "Jump up"))
   (leader-keys
-	"g" '(magit :which-key "Magit"))
+    "g" '(magit :which-key "Magit"))
   (leader-keys
     "j" '(:ignore t :which-key "Janet")
     "jb" '(ijanet-eval-buffer :which-key "Eval buffer")
@@ -355,8 +355,11 @@ folder, otherwise delete a word"
   (leader-keys
     "d" '(:ignore t :which-key "Directory")
     "dd" '(dired-jump :which-key "Open Dired")
-	"dc" '(make-directory :which-key "Create directory")
-	"dk" '(delete-directory :which-key "Delete directory"))
+    "dc" '(make-directory :which-key "Create directory")
+    "dk" '(delete-directory :which-key "Delete directory"))
+  (leader-keys
+    "o" '(:ignore t :which-key "Org")
+    "oa" '(org-agenda-list :which-key "Open agenda"))
   (leader-keys
     "v" '(:ignore t :which-key "vterm")
     "vv" '(vterm :which-key "open vterm on other window")
@@ -498,21 +501,22 @@ folder, otherwise delete a word"
 (add-hook 'elisp-mode-hook #'smartparens-mode)
 
 ;;---------ORG--------
-(straight-use-package 'org-appear)
+;(straight-use-package 'org-appear)
 
 ;; Return or left-click with mouse follows link
-(customize-set-variable 'org-return-follows-link t)
+;(customize-set-variable 'org-return-follows-link t)
 ;;(customize-set-variable 'org-mouse-1-follows-link t)
 
 ;; Display links as the description provided
-(customize-set-variable 'org-descriptive-links t)
+;(customize-set-variable 'org-descriptive-links t)
 
 ;; Hide markup markers
-(customize-set-variable 'org-hide-emphasis-markers t)
+;(customize-set-variable 'org-hide-emphasis-markers t)
 
-(add-hook 'org-mode-hook 'org-appear-mode)
+;(add-hook 'org-mode-hook 'org-appear-mode)
 
-(use-package org)
+;(use-package org)
+(setq org-agenda-files '("~/notes/20220718T084806--agenda__personal.org"))
 
 ;;;---------DENOTE------------
 (straight-use-package 'denote)
