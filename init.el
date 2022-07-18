@@ -358,18 +358,18 @@ folder, otherwise delete a word"
     "jb" '(ijanet-eval-buffer :which-key "Eval buffer")
     "je" '(ijanet-eval-sexp-at-point :which-key "Eval expression"))
   (leader-keys
-    "f" '(:ignore t :which-key "File")
-    "ff" '(find-file-at-point :which-key "Find file")
-    "fs" '(save-buffer :which-key "Save file")
-    "fd" '(dired-jump :which-key "Dired"))
+    "f" '(:ignore t :which-key "file")
+    "ff" '(find-file-at-point :which-key "find file")
+    "fs" '(save-buffer :which-key "save file")
+    "fd" '(dirvish :which-key "dirvish"))
   (leader-keys
-    "d" '(:ignore t :which-key "Directory")
-    "dd" '(dired-jump :which-key "Open Dired")
-    "dc" '(make-directory :which-key "Create directory")
-    "dk" '(delete-directory :which-key "Delete directory"))
+    "d" '(:ignore t :which-key "directory")
+    "dd" '(dirvish :which-key "dirvish")
+    "dc" '(make-directory :which-key "create directory")
+    "dk" '(delete-directory :which-key "delete directory"))
   (leader-keys
     "o" '(:ignore t :which-key "Org")
-    "oa" '(org-agenda-list :which-key "Open agenda"))
+    "oa" '(org-agenda :which-key "Open agenda"))
   (leader-keys
     "v" '(:ignore t :which-key "vterm")
     "vv" '(vterm :which-key "open vterm on other window")
@@ -467,6 +467,13 @@ folder, otherwise delete a word"
   :hook (dired-mode . treemacs-icons-dired-enable-once)
   :ensure t)
 
+;;;---------DIRVISH------------
+(use-package dirvish
+  :ensure t
+  :init
+  ;; Let Dirvish take over Dired globally
+  (dirvish-override-dired-mode))
+
 ;;;---------RUST---------------
 (use-package rustic)
 (add-hook 'rust-mode-hook #'smartparens-mode)
@@ -528,6 +535,18 @@ folder, otherwise delete a word"
 ;(use-package org)
 (setq org-agenda-files '("~/notes/20220718T084806--agenda__personal.org"))
 
+(setq org-agenda-custom-commands
+	  '(("a" "demo block agenda"
+		 ((todo "TODO"
+				((org-agenda-overriding-header "Tasks\n")))
+		  (agenda ""
+				  ((org-agenda-overriding-header "\nAgenda\n")
+				   (org-agenda-span 10)
+				   (org-agenda-past-days 3)
+				   (org-agenda-time-grid nil)
+				   (org-deadline-warning-days 0)
+				   (org-agenda-block-separator nil)))))))
+
 ;;;---------DENOTE------------
 (straight-use-package 'denote)
 (setq denote-directory (expand-file-name "~/notes"))
@@ -544,37 +563,3 @@ folder, otherwise delete a word"
 
 ;;;---------VTERM-------------
 (straight-use-package 'vterm)
-
-;;;---------CUSTOM------------
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   '("dad40020beea412623b04507a4c185079bff4dcea20a93d8f8451acb6afc8358" "e13beeb34b932f309fb2c360a04a460821ca99fe58f69e65557d6c1b10ba18c7" default))
- '(ignored-local-variable-values
-   '((elisp-lint-indent-specs
-      (if-let* . 2)
-      (when-let* . 1)
-      (let* . defun)
-      (nrepl-dbind-response . 2)
-      (cider-save-marker . 1)
-      (cider-propertize-region . 1)
-      (cider-map-repls . 1)
-      (cider--jack-in . 1)
-      (cider--make-result-overlay . 1)
-      (insert-label . defun)
-      (insert-align-label . defun)
-      (insert-rect . defun)
-      (cl-defun . 2)
-      (with-parsed-tramp-file-name . 2)
-      (thread-first . 0)
-      (thread-last . 0))
-     (checkdoc-package-keywords-flag))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
