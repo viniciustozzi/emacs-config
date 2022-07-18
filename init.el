@@ -315,17 +315,17 @@ folder, otherwise delete a word"
   (global-set-key (kbd "M-k") #'lsp-describe-thing-at-point)
 
   (leader-keys
-    "." '(find-file-at-point :which-key "Find File"))
+    "." '(find-file-at-point :which-key "find File"))
   (leader-keys
-    "h" '(:ignore t :which-key "Help")
-    "hf" '(describe-function :which-key "Function")
-    "hv" '(describe-variable :which-key "Variable")
-    "hk" '(describe-key :which-key "Key"))
+    "h" '(:ignore t :which-key "help")
+    "hf" '(describe-function :which-key "function")
+    "hv" '(describe-variable :which-key "variable")
+    "hk" '(describe-key :which-key "key"))
   (leader-keys
-    "b" '(:ignore t :which-key "Buffer")
-    "bk" '(kill-current-buffer :which-key "Kill buffer")
+    "b" '(:ignore t :which-key "buffer")
+    "bk" '(kill-current-buffer :which-key "kill buffer")
     "bi" '(ibuffer :which-key "ibuffer")
-    "bf" '(consult-buffer :which-key "Find buffer"))
+    "bf" '(consult-buffer :which-key "find buffer"))
   (leader-keys
     "c" '(:ignore t :which-key "Code")
     "cd" '(lsp-find-definition :which-key "Jump to definition")
@@ -349,7 +349,10 @@ folder, otherwise delete a word"
     "wj" '(evil-window-down :which-key "Jump down")
     "wk" '(evil-window-up :which-key "Jump up"))
   (leader-keys
-    "g" '(magit :which-key "Magit"))
+    "g" '(:ignore t :which-key "magit")
+    "gg" '(magit :which-key "status")
+    "gf" '(magit-fetch :which-key "fetch")
+    "gF" '(magit-fetch :which-key "pull"))
   (leader-keys
     "j" '(:ignore t :which-key "Janet")
     "jb" '(ijanet-eval-buffer :which-key "Eval buffer")
