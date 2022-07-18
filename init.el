@@ -158,6 +158,13 @@
 (straight-use-package 'beacon)
 (beacon-mode 1)
 
+;;Raibow delimiters
+(straight-use-package 'rainbow-delimiters)
+(add-hook 'lisp-mode-hook #'rainbow-delimiters-mode)
+(add-hook 'emacs-lisp-mode-hook #'rainbow-delimiters-mode)
+(add-hook 'clojure-mode-hook #'rainbow-delimiters-mode)
+(add-hook 'clojurescript-mode-hook #'rainbow-delimiters-mode)
+
 ;;;-------COMPLETION/SEARCHING------------
 
 (straight-use-package 'cape)
