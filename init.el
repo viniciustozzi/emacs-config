@@ -342,7 +342,7 @@ folder, otherwise delete a word"
   (leader-keys
     "n" '(:ignore t :which-key "Notes")
     "nc" '(denote :which-key "Create note")
-    "nj" '())
+    "nj" '(create-denote-journal "Journal"))
   (leader-keys
     "w" '(:ignore t :which-key "+window")
     "wl" '(evil-window-right :which-key "jump right")
@@ -354,6 +354,11 @@ folder, otherwise delete a word"
     "gg" '(magit :which-key "status")
     "gf" '(magit-fetch :which-key "fetch")
     "gF" '(magit-fetch :which-key "pull"))
+  (leader-keys
+    "s" '(:ignore t :which-key "+search")
+    "sl" '(consult-line :which-key "line")
+    "sb" '(consult-buffer :which-key "buffer")
+    "sa" '(consult-org-agenda :which-key ))
   (leader-keys
     "j" '(:ignore t :which-key "+janet")
     "jb" '(ijanet-eval-buffer :which-key "eval buffer")
@@ -371,8 +376,7 @@ folder, otherwise delete a word"
   (leader-keys
     "o" '(:ignore t :which-key "+org")
     "oa" '(org-agenda :which-key "agenda")
-    "oc" '(org-capture :which-key "org capture")
-    )
+    "oc" '(org-capture :which-key "capture"))
   (leader-keys
     "v" '(:ignore t :which-key "vterm")
     "vv" '(vterm :which-key "open vterm on other window")
@@ -401,6 +405,12 @@ folder, otherwise delete a word"
 
 ;;For debugging
 (use-package dap-mode)
+
+;;;---------DASHBOARD----------
+(use-package dashboard
+  :ensure t
+  :config
+  (dashboard-setup-startup-hook))
 
 ;;;---------Treemacs-----------
 (use-package treemacs
@@ -552,6 +562,8 @@ folder, otherwise delete a word"
 (require 'denote-dired)
 (add-hook 'dired-mode-hook #'denote-dired-mode)
 
+;;TODO Check if file already exists
+;;Use file-exists-p
 (defun create-denote-journal ()
   "Create an entry tagged 'journal' with the date as its title."
   (interactive)
