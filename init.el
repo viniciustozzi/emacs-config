@@ -136,6 +136,12 @@
 
 (setq modus-themes-bold-constructs t)
 
+(straight-use-package 'rainbow-delimiters)
+(add-hook 'emacs-lisp-mode-hook #'rainbow-delimiters-mode)
+(add-hook 'lisp-mode-hook #'rainbow-delimiters-mode)
+(add-hook 'clojure-mode-hook #'rainbow-delimiters-mode)
+(add-hook 'clojure-script-mode-hook #'rainbow-delimiters-mode)
+
 ;; Configure `doom-modeline'
 (customize-set-variable 'doom-modeline-height 10)
 (customize-set-variable 'doom-modeline-bar-width 6)
@@ -564,7 +570,7 @@ folder, otherwise delete a word"
 
 (require 'denote-dired)
 (add-hook 'dired-mode-hook #'denote-dired-mode)
-
+(parse-time-string "")
 ;;TODO Check if file already exists
 ;;Use file-exists-p
 (defun create-denote-journal ()
