@@ -341,22 +341,23 @@ folder, otherwise delete a word"
     "ea" '(cider-eval-all-files :which-key "Eval all files"))
   (leader-keys
     "n" '(:ignore t :which-key "Notes")
-    "nc" '(denote :which-key "Create note"))
+    "nc" '(denote :which-key "Create note")
+    "nj" '())
   (leader-keys
-    "w" '(:ignore t :which-key "Window")
-    "wl" '(evil-window-right :which-key "Jump right")
-    "wh" '(evil-window-left :which-key "Jump left")
-    "wj" '(evil-window-down :which-key "Jump down")
-    "wk" '(evil-window-up :which-key "Jump up"))
+    "w" '(:ignore t :which-key "+window")
+    "wl" '(evil-window-right :which-key "jump right")
+    "wh" '(evil-window-left :which-key "jump left")
+    "wj" '(evil-window-down :which-key "jump down")
+    "wk" '(evil-window-up :which-key "jump up"))
   (leader-keys
-    "g" '(:ignore t :which-key "magit")
+    "g" '(:ignore t :which-key "+magit")
     "gg" '(magit :which-key "status")
     "gf" '(magit-fetch :which-key "fetch")
     "gF" '(magit-fetch :which-key "pull"))
   (leader-keys
-    "j" '(:ignore t :which-key "Janet")
-    "jb" '(ijanet-eval-buffer :which-key "Eval buffer")
-    "je" '(ijanet-eval-sexp-at-point :which-key "Eval expression"))
+    "j" '(:ignore t :which-key "+janet")
+    "jb" '(ijanet-eval-buffer :which-key "eval buffer")
+    "je" '(ijanet-eval-sexp-at-point :which-key "eval expression"))
   (leader-keys
     "f" '(:ignore t :which-key "file")
     "ff" '(find-file-at-point :which-key "find file")
@@ -368,8 +369,10 @@ folder, otherwise delete a word"
     "dc" '(make-directory :which-key "create directory")
     "dk" '(delete-directory :which-key "delete directory"))
   (leader-keys
-    "o" '(:ignore t :which-key "Org")
-    "oa" '(org-agenda :which-key "Open agenda"))
+    "o" '(:ignore t :which-key "+org")
+    "oa" '(org-agenda :which-key "agenda")
+    "oc" '(org-capture :which-key "org capture")
+    )
   (leader-keys
     "v" '(:ignore t :which-key "vterm")
     "vv" '(vterm :which-key "open vterm on other window")
@@ -535,17 +538,12 @@ folder, otherwise delete a word"
 ;(use-package org)
 (setq org-agenda-files '("~/notes/20220718T084806--agenda__personal.org"))
 
-(setq org-agenda-custom-commands
-	  '(("a" "demo block agenda"
-		 ((todo "TODO"
-				((org-agenda-overriding-header "Tasks\n")))
-		  (agenda ""
-				  ((org-agenda-overriding-header "\nAgenda\n")
-				   (org-agenda-span 10)
-				   (org-agenda-past-days 3)
-				   (org-agenda-time-grid nil)
-				   (org-deadline-warning-days 0)
-				   (org-agenda-block-separator nil)))))))
+
+;;Capture Templates
+(setq org-capture-templates
+      '(("t" "Todo" entry
+		 (file "~/notes/20220718T084806--agenda__personal.org")
+         "* TODO %?\n  %i\n  %a")))
 
 ;;;---------DENOTE------------
 (straight-use-package 'denote)
@@ -554,7 +552,7 @@ folder, otherwise delete a word"
 (require 'denote-dired)
 (add-hook 'dired-mode-hook #'denote-dired-mode)
 
-(defun my-denote-journal ()
+(defun create-denote-journal ()
   "Create an entry tagged 'journal' with the date as its title."
   (interactive)
   (denote
