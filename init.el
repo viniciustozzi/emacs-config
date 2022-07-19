@@ -385,7 +385,9 @@ folder, otherwise delete a word"
   (leader-keys
     "o" '(:ignore t :which-key "+org")
     "oa" '(org-agenda :which-key "agenda")
-    "oc" '(org-capture :which-key "capture"))
+    "oc" '(org-capture :which-key "capture")
+    "os" '(org-schedule :which-key "schedule")
+    "od" '(org-schedule :which-key "deadline"))
   (leader-keys
     "v" '(:ignore t :which-key "vterm")
     "vv" '(vterm :which-key "open vterm on other window")
@@ -543,7 +545,6 @@ folder, otherwise delete a word"
 ;(straight-use-package 'org-appear)
 
 ;; Return or left-click with mouse follows link
-;(customize-set-variable 'org-return-follows-link t)
 ;;(customize-set-variable 'org-mouse-1-follows-link t)
 
 ;; Display links as the description provided
@@ -554,9 +555,9 @@ folder, otherwise delete a word"
 
 ;(add-hook 'org-mode-hook 'org-appear-mode)
 
-;(use-package org)
-(setq org-agenda-files '("~/notes/agenda.org"))
+(customize-set-variable 'org-return-follows-link t)
 
+(setq org-agenda-files '("~/notes/agenda.org"))
 
 ;;Capture Templates
 (setq org-capture-templates
