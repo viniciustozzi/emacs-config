@@ -32,6 +32,9 @@
 ;; Revert buffers when the underlying file has changed
 (global-auto-revert-mode 1)
 
+;;Start emacs maximized
+(add-hook 'window-setup-hook 'toggle-frame-maximized t)
+
 ;; Use "y" and "n" to confirm/negate prompt instead of "yes" and "no"
 ;; Using `advice' here to make it easy to reverse in custom
 ;; configurations with `(advice-remove 'yes-or-no-p #'y-or-n-p)'
@@ -546,13 +549,13 @@ folder, otherwise delete a word"
 ;(add-hook 'org-mode-hook 'org-appear-mode)
 
 ;(use-package org)
-(setq org-agenda-files '("~/notes/20220718T084806--agenda__personal.org"))
+(setq org-agenda-files '("~/notes/agenda.org"))
 
 
 ;;Capture Templates
 (setq org-capture-templates
       '(("t" "Todo" entry
-		 (file "~/notes/20220718T084806--agenda__personal.org")
+		 (file "~/notes/agenda.org")
          "* TODO %?\n  %i\n  %a")))
 
 ;;;---------DENOTE------------
