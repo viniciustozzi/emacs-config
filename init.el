@@ -570,7 +570,7 @@ folder, otherwise delete a word"
 
 (require 'denote-dired)
 (add-hook 'dired-mode-hook #'denote-dired-mode)
-(parse-time-string "")
+
 ;;TODO Check if file already exists
 ;;Use file-exists-p
 (defun create-denote-journal ()
@@ -579,6 +579,54 @@ folder, otherwise delete a word"
   (denote
    (format-time-string "%A %e %B %Y") ; format like Tuesday 14 June 2022
    '("journal"))) ; multiple keywords are a list of strings: '("one" "two")
+
+(setq org-agenda-custom-commands
+      '(("a" "Full Agenda"
+	 (agenda "" ((org-agenda-overriding-header "Agenda\n")
+		    (org-agenda-span 7)
+		    (org-agenda-start-on-weekday 0)
+		    (org-agenda-time-grid nil)
+		    (org-agenda-entry-types '(:timestamp :sexp)
+					    )))
+	 (alltodo "" ((org-agenda-overriding-header "\nTasks\n"))))))
+
+(setq org-agenda-custom-commands
+      `(("a" "Daily agenda and top priority tasks"
+         ((tags-todo "*"
+                     ((org-agenda-skip-function '(org-agenda-skip-if nil '(timestamp)))
+                      ;(org-agenda-skip-function
+                       ;`(org-agenda-skip-entry-if
+                      (org-agenda-block-separator nil)
+                      (org-agenda-overriding-header "Tasks\n")))
+          (agenda "" ((org-agenda-span 1)
+                      (org-deadline-warning-days 0)
+                      (org-agenda-block-separator nil)
+                      (org-scheduled-past-days 0)
+                      ;; We don't need the `org-agenda-date-today'
+                      ;; highlight because that only has a practical
+                      ;; utility in multi-day views.
+                      (org-agenda-day-face-function (lambda (date) 'org-agenda-date))
+                      (org-agenda-format-date "%A %-e %B %Y")
+                      (org-agenda-overriding-header "\nToday\n")))
+          (agenda "" ((org-agenda-start-on-weekday nil)
+                      (org-agenda-start-day "+1d")
+                      (org-agenda-span 7)
+                      (org-deadline-warning-days 0)
+                      (org-agenda-block-separator nil)
+                      (org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
+                      (org-agenda-overriding-header "\nWeek\n")))
+          (agenda "" ((org-agenda-time-grid nil)
+                      (org-agenda-start-on-weekday nil)
+                      ;; We don't want to replicate the previous section's
+                      ;; three days, so we start counting from the day after.
+                      (org-agenda-start-day "+4d")
+                      (org-agenda-span 14)
+                      (org-agenda-show-all-dates nil)
+                      (org-deadline-warning-days 0)
+                      (org-agenda-block-separator nil)
+                      ;(org-agenda-entry-types '(:deadline))
+                      (org-agenda-skip-function '(org-agenda-skip-entry-if 'done))
+                      (org-agenda-overriding-header "\nFuture (+14d)\n")))))))
 
 ;;;---------VTERM-------------
 (straight-use-package 'vterm)
