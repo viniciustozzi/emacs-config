@@ -383,6 +383,8 @@ folder, otherwise delete a word"
     "dc" '(make-directory :which-key "create directory")
     "dk" '(delete-directory :which-key "delete directory"))
   (leader-keys
+	"t" '(gts-do-translate :which-key "translate"))
+  (leader-keys
     "o" '(:ignore t :which-key "+org")
     "oa" '(org-agenda :which-key "agenda")
     "oc" '(org-capture :which-key "capture")
@@ -629,5 +631,25 @@ folder, otherwise delete a word"
                       (org-agenda-skip-function '(org-agenda-skip-entry-if 'done))
                       (org-agenda-overriding-header "\nFuture (+14d)\n")))))))
 
+;;;---------GO-TRANSLATE------
+(straight-use-package 'go-translate)
+(require 'go-translate)
+
+(require 'go-translate)
+
+(setq gts-translate-list '(("de" "en")))
+
+(setq gts-default-translator
+      (gts-translator
+       :picker (gts-prompt-picker)
+       :engines (list (gts-bing-engine) (gts-google-engine))
+       :render (gts-buffer-render)))
+
+;;;---------POSFRAME----------
+(straight-use-package 'posframe)
+
 ;;;---------VTERM-------------
 (straight-use-package 'vterm)
+
+(provide 'ínit)
+;;; init.el ends here
