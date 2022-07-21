@@ -130,11 +130,20 @@
 (straight-use-package 'elisp-demos)
 (straight-use-package 'helpful)
 
-(require 'modus-themes)
-(modus-themes-load-themes)
-(modus-themes-load-vivendi)
+;(require 'modus-themes)
+;(modus-themes-load-themes)
+;(modus-themes-load-vivendi)
 
 (setq modus-themes-bold-constructs t)
+
+(use-package almost-mono-themes
+  :config
+  (load-theme 'almost-mono-black t)
+  (disable-theme 'deeper-blue)
+  ;; (load-theme 'almost-mono-gray t)
+  ;; (load-theme 'almost-mono-cream t)
+ ;; (load-theme 'almost-mono-white t)
+  )
 
 (straight-use-package 'rainbow-delimiters)
 (add-hook 'emacs-lisp-mode-hook #'rainbow-delimiters-mode)
