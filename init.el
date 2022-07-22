@@ -78,6 +78,7 @@
 ;;(straight-use-package 'undo-tree)
 (straight-use-package 'evil-collection)
 (straight-use-package 'evil-nerd-commenter)
+(straight-use-package 'undo-fu)
 
 ;; Turn on undo-tree globally
 ;;(global-undo-tree-mode)
@@ -87,7 +88,7 @@
 (customize-set-variable 'evil-want-keybinding nil)
 (customize-set-variable 'evil-want-C-i-jump nil)
 (customize-set-variable 'evil-respect-visual-line-mode t)
-;;(customize-set-variable 'evil-undo-system 'undo-tree)
+(customize-set-variable 'evil-undo-system 'undo-fu)
 
 (setq evil-want-C-u-scroll t)
 
