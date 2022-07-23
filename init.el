@@ -387,10 +387,10 @@ folder, otherwise delete a word"
     "f" '(:ignore t :which-key "file")
     "ff" '(find-file-at-point :which-key "find file")
     "fs" '(save-buffer :which-key "save file")
-    "fd" '(dirvish :which-key "dirvish"))
+    "fd" '(dired-jump :which-key "dired"))
   (leader-keys
     "d" '(:ignore t :which-key "directory")
-    "dd" '(dirvish :which-key "dirvish")
+    "dd" '(dired-jump :which-key "dired")
     "dc" '(make-directory :which-key "create directory")
     "dk" '(delete-directory :which-key "delete directory"))
   (leader-keys
@@ -505,11 +505,11 @@ folder, otherwise delete a word"
   :ensure t)
 
 ;;;---------DIRVISH------------
-(use-package dirvish
-  :ensure t
-  :init
-  ;; Let Dirvish take over Dired globally
-  (dirvish-override-dired-mode))
+;(use-package dirvish
+;  :ensure t
+;  :init
+;  ;; Let Dirvish take over Dired globally
+;  (dirvish-override-dired-mode))
 
 ;;;---------RUST---------------
 (use-package rustic)
