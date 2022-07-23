@@ -359,9 +359,10 @@ folder, otherwise delete a word"
     "eb" '(cider-eval-buffer :which-key "Eval buffer")
     "ea" '(cider-eval-all-files :which-key "Eval all files"))
   (leader-keys
-    "n" '(:ignore t :which-key "Notes")
-    "nc" '(denote :which-key "Create note")
-    "nj" '(create-denote-journal "Journal"))
+    "n" '(:ignore t :which-key "+notes")
+    "nc" '(denote :which-key "create note")
+    "nj" '(create-denote-journal :which-key "journal")
+    "nf" '(consult-notes :which-key "find note"))
   (leader-keys
     "w" '(:ignore t :which-key "+window")
     "wl" '(evil-window-right :which-key "jump right")
@@ -393,7 +394,7 @@ folder, otherwise delete a word"
     "dc" '(make-directory :which-key "create directory")
     "dk" '(delete-directory :which-key "delete directory"))
   (leader-keys
-	"t" '(gts-do-translate :which-key "translate"))
+    "t" '(gts-do-translate :which-key "translate"))
   (leader-keys
     "o" '(:ignore t :which-key "+org")
     "oa" '(org-agenda :which-key "agenda")
@@ -593,16 +594,16 @@ folder, otherwise delete a word"
    (format-time-string "%A %e %B %Y") ; format like Tuesday 14 June 2022
    '("journal"))) ; multiple keywords are a list of strings: '("one" "two")
 
-(setq org-agenda-custom-commands
-      '(("a" "Full Agenda"
-	 (agenda "" ((org-agenda-overriding-header "Agenda\n")
-		    (org-agenda-span 7)
-		    (org-agenda-start-on-weekday 0)
-		    (org-agenda-time-grid nil)
-		    (org-agenda-entry-types '(:timestamp :sexp)
-					    )))
-	 (alltodo "" ((org-agenda-overriding-header "\nTasks\n"))))))
+(use-package consult-notes
+  :straight (:type git :host github :repo "mclear-tools/consult-notes")
+  :commands (consult-notes
+             consult-notes-search-in-all-notes
+             consult-notes-org-roam-find-node
+             consult-notes-org-roam-find-node-relation)
+  :config (setq consult-notes-sources '(("Notes" ?d "~/notes"))))
 
+
+;;TODO Move this to org mode section
 (setq org-agenda-custom-commands
       `(("a" "Daily agenda and top priority tasks"
          ((tags-todo "*"
