@@ -378,7 +378,9 @@ folder, otherwise delete a word"
     "s" '(:ignore t :which-key "+search")
     "sl" '(consult-line :which-key "line")
     "sb" '(consult-buffer :which-key "buffer")
-    "sa" '(consult-org-agenda :which-key ))
+    "sa" '(consult-org-agenda :which-key "agenda")
+	"sm" '(consult-bookmark :which-key "bookmark")
+	"st" '(consult-theme :which-key "themes"))
   (leader-keys
     "j" '(:ignore t :which-key "+janet")
     "jb" '(ijanet-eval-buffer :which-key "eval buffer")
