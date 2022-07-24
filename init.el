@@ -159,6 +159,9 @@
 (customize-set-variable 'doom-modeline-buffer-file-name-style 'truncate-except-project)
 (doom-modeline-mode 1)
 
+(straight-use-package 'all-the-icons-dired)
+(add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
+
 ;; Make `describe-*' screens more helpful
 (require 'helpful)
 (define-key helpful-mode-map [remap revert-buffer] #'helpful-update)
@@ -604,6 +607,8 @@ folder, otherwise delete a word"
              consult-notes-org-roam-find-node-relation)
   :config (setq consult-notes-sources '(("Notes" ?d "~/notes"))))
 
+
+(add-hook 'denote-link-insert-functions 'denote-link-backlinks t)
 
 ;;TODO Move this to org mode section
 (setq org-agenda-custom-commands
