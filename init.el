@@ -666,6 +666,9 @@ folder, otherwise delete a word"
 ;;;---------POSFRAME----------
 (straight-use-package 'posframe)
 
+;;;---------EPUB--------------
+(straight-use-package 'nov)
+
 ;;;---------VTERM-------------
 (straight-use-package 'vterm)
 
