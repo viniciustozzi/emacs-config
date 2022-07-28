@@ -365,7 +365,8 @@ folder, otherwise delete a word"
     "n" '(:ignore t :which-key "+notes")
     "nc" '(denote :which-key "create note")
     "nj" '(create-denote-journal :which-key "journal")
-    "nf" '(consult-notes :which-key "find note"))
+    "nf" '(consult-notes :which-key "find note")
+    "nl" '(dired-notes :which-key "list notes"))
   (leader-keys
     "w" '(:ignore t :which-key "+window")
     "wl" '(evil-window-right :which-key "jump right")
@@ -382,8 +383,9 @@ folder, otherwise delete a word"
     "sl" '(consult-line :which-key "line")
     "sb" '(consult-buffer :which-key "buffer")
     "sa" '(consult-org-agenda :which-key "agenda")
-	"sm" '(consult-bookmark :which-key "bookmark")
-	"st" '(consult-theme :which-key "themes"))
+    "sn" '(consult-notes :which-key "notes")
+    "sm" '(consult-bookmark :which-key "bookmark")
+    "st" '(consult-theme :which-key "themes"))
   (leader-keys
     "j" '(:ignore t :which-key "+janet")
     "jb" '(ijanet-eval-buffer :which-key "eval buffer")
@@ -410,6 +412,11 @@ folder, otherwise delete a word"
     "v" '(:ignore t :which-key "vterm")
     "vv" '(vterm :which-key "open vterm on other window")
     "vo" '(vterm-other-window :which-key "open vterm in other window")))
+
+
+(defun dired-notes ()
+  (interactive)
+  (dired "~/notes"))
 
 ;;;---------LSP----------------
 (use-package lsp-mode
@@ -671,3 +678,15 @@ folder, otherwise delete a word"
 
 (provide 'ínit)
 ;;; init.el ends here
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ignored-local-variable-values '((cider-shadow-cljs-default-options . "app"))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
