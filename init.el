@@ -675,6 +675,7 @@ folder, otherwise delete a word"
 
 ;;;---------EPUB--------------
 (straight-use-package 'nov)
+(setq nov-text-width 80)
 
 ;;;---------VTERM-------------
 (straight-use-package 'vterm)
