@@ -330,11 +330,13 @@ folder, otherwise delete a word"
 
   (general-define-key
    :states 'normal
-   "<S-K>" 'lsp-describe-thing-at-point)
+   "K" 'lsp-ui-doc-show)
+
+  (setq lsp-ui-doc-position 'at-point)
 
   (global-set-key (kbd "C-u") #'evil-scroll-up)
   (global-set-key (kbd "C-M-l") #'lsp-format-buffer)
-  (global-set-key (kbd "M-k") #'lsp-describe-thing-at-point)
+  (global-set-key (kbd "M-k") #'lsp-ui-doc-show)
 
   (leader-keys
     "." '(find-file-at-point :which-key "find File"))
@@ -442,6 +444,7 @@ folder, otherwise delete a word"
 ;;For debugging
 (use-package dap-mode)
 
+(setq lsp-ui-doc-show-with-mouse nil)
 ;;;---------DASHBOARD----------
 (use-package dashboard
   :ensure t
