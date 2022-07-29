@@ -683,6 +683,18 @@ folder, otherwise delete a word"
 ;;;---------VTERM-------------
 (straight-use-package 'vterm)
 
+;;;---------OBSIDIAN----------
+(use-package obsidian
+  :straight (:type git :host github :repo "licht1stein/obsidian.el")
+  :config (obsidian-specify-path "~/notes/Vault/")
+  ;:custom
+  ;(obsidian-inbox-directory "Inbox")
+  :bind (:map obsidian-mode-map
+		;; Replace C-c C-o with Obsidian.el's implementation. It's ok to use another key binding.
+		("C-c C-o" . obsidian-follow-link-at-point)
+		;; If you prefer you can use `obsidian-insert-wikilink'
+		("C-c C-l" . obsidian-insert-wikilink)))
+
 (provide 'ínit)
 ;;; init.el ends here
 (custom-set-variables
