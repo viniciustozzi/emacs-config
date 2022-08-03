@@ -330,13 +330,13 @@ folder, otherwise delete a word"
 
   (general-define-key
    :states 'normal
-   "K" 'lsp-ui-doc-show)
+   "K" 'lsp-ui-doc-glance)
 
   (setq lsp-ui-doc-position 'at-point)
 
   (global-set-key (kbd "C-u") #'evil-scroll-up)
   (global-set-key (kbd "C-M-l") #'lsp-format-buffer)
-  (global-set-key (kbd "M-k") #'lsp-ui-doc-show)
+  (global-set-key (kbd "M-k") #'lsp-ui-doc-glance)
 
   (leader-keys
     "." '(find-file-at-point :which-key "find File"))
