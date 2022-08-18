@@ -393,6 +393,11 @@ folder, otherwise delete a word"
     "sm" '(consult-bookmark :which-key "bookmark")
     "st" '(consult-theme :which-key "themes"))
   (leader-keys
+	"m" '(:ignore t :which-key "+bookmark")
+	"ma" '(bookmark-set :which-key "add")
+	"md" '(bookmark-delete :which-key "delete")
+	"mf" '(consult-bookmark :which-key "search"))
+  (leader-keys
     "j" '(:ignore t :which-key "+janet")
     "jb" '(ijanet-eval-buffer :which-key "eval buffer")
     "je" '(ijanet-eval-sexp-at-point :which-key "eval expression"))
