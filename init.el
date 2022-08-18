@@ -71,8 +71,10 @@
 (when (daemonp)
   (exec-path-from-shell-initialize))
 
-
 (setq tab-width 4)
+
+(straight-use-package 'logos)
+(straight-use-package 'olivetti)
 ;;;-------Evil Mode---------
 (straight-use-package 'evil)
 ;;(straight-use-package 'undo-tree)
