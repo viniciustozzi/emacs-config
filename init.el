@@ -126,6 +126,7 @@
 
 (straight-use-package 'gruber-darker-theme)
 (straight-use-package 'modus-themes)
+(straight-use-package 'ef-themes)
 (straight-use-package 'all-the-icons)
 (straight-use-package 'doom-modeline)
 (straight-use-package 'elisp-demos)
@@ -704,6 +705,8 @@ folder, otherwise delete a word"
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("ae23a81a14ea1b41f4782c4f0f3d660c7ec24f2f512b4f8c634ae52fe0c9be59" default))
  '(ignored-local-variable-values '((cider-shadow-cljs-default-options . "app"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
