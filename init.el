@@ -20,6 +20,8 @@
 ;;;--------General Defaults--------
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 
+(setq display-line-numbers 'relative)
+
 ;;Disable backup files
 (setq make-backup-files nil)
 (auto-save-mode 0)
@@ -75,6 +77,7 @@
 
 (straight-use-package 'logos)
 (straight-use-package 'olivetti)
+(straight-use-package 'darkroom)
 ;;;-------Evil Mode---------
 (straight-use-package 'evil)
 ;;(straight-use-package 'undo-tree)
@@ -607,8 +610,8 @@ folder, otherwise delete a word"
 (straight-use-package 'denote)
 (setq denote-directory (expand-file-name "~/notes"))
 
-(require 'denote-dired)
-(add-hook 'dired-mode-hook #'denote-dired-mode)
+;;(require 'denote-dired)
+;;(add-hook 'dired-mode-hook #'denote-dired-mode)
 
 ;;TODO Check if file already exists
 ;;Use file-exists-p
