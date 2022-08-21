@@ -20,8 +20,6 @@
 ;;;--------General Defaults--------
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 
-(setq display-line-numbers 'relative)
-
 ;;Disable backup files
 (setq make-backup-files nil)
 (auto-save-mode 0)
@@ -78,7 +76,11 @@
 (straight-use-package 'logos)
 (straight-use-package 'olivetti)
 (straight-use-package 'darkroom)
-;;;-------Evil Mode---------
+
+;;;-------Highlight todo---
+(straight-use-package 'hl-todo)
+(global-hl-todo-mode 1)
+
 (straight-use-package 'evil)
 ;;(straight-use-package 'undo-tree)
 (straight-use-package 'evil-collection)
@@ -136,17 +138,19 @@
 (straight-use-package 'doom-modeline)
 (straight-use-package 'elisp-demos)
 (straight-use-package 'helpful)
+(straight-use-package 'modus-themes)
 
-;(require 'modus-themes)
+(disable-theme 'deeper-blue)
+(require 'modus-themes)
 ;(modus-themes-load-themes)
-;(modus-themes-load-vivendi)
+(modus-themes-load-vivendi)
 
 (setq modus-themes-bold-constructs t)
 
 (use-package almost-mono-themes
   :config
-  (load-theme 'almost-mono-black t)
-  (disable-theme 'deeper-blue)
+  ;(load-theme 'almost-mono-black t)
+  ;;(disable-theme 'deeper-blue)
   ;; (load-theme 'almost-mono-gray t)
   ;; (load-theme 'almost-mono-cream t)
  ;; (load-theme 'almost-mono-white t)
@@ -708,6 +712,11 @@ folder, otherwise delete a word"
 		;; If you prefer you can use `obsidian-insert-wikilink'
 		("C-c C-l" . obsidian-insert-wikilink)))
 
+;;;---------RESTCLIENT---------
+(straight-use-package 'restclient)
+
+(setq display-line-numbers 'relative)
+
 (provide 'ínit)
 ;;; init.el ends here
 (custom-set-variables
@@ -716,7 +725,7 @@ folder, otherwise delete a word"
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   '("ae23a81a14ea1b41f4782c4f0f3d660c7ec24f2f512b4f8c634ae52fe0c9be59" default))
+   '())
  '(ignored-local-variable-values '((cider-shadow-cljs-default-options . "app"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
