@@ -712,9 +712,15 @@ folder, otherwise delete a word"
 		;; If you prefer you can use `obsidian-insert-wikilink'
 		("C-c C-l" . obsidian-insert-wikilink)))
 
-;;;---------RESTCLIENT---------
-(straight-use-package 'restclient)
+;;;---------LUA-------------
+(straight-use-package 'lua-mode)
 
+(use-package pico8-mode
+  :straight (:type git :host github :repo "Kaali/pico8-mode"))
+
+;;;--------Line Numbers------
+(global-display-line-numbers-mode 1)
+(setq global-display-line-numbers 'relative)
 (setq display-line-numbers 'relative)
 
 (provide 'ínit)
