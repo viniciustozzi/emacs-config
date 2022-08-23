@@ -400,10 +400,10 @@ folder, otherwise delete a word"
     "sm" '(consult-bookmark :which-key "bookmark")
     "st" '(consult-theme :which-key "themes"))
   (leader-keys
-	"m" '(:ignore t :which-key "+bookmark")
-	"ma" '(bookmark-set :which-key "add")
-	"md" '(bookmark-delete :which-key "delete")
-	"mf" '(consult-bookmark :which-key "search"))
+    "m" '(:ignore t :which-key "+bookmark")
+    "ma" '(bookmark-set :which-key "add")
+    "md" '(bookmark-delete :which-key "delete")
+    "mf" '(consult-bookmark :which-key "search"))
   (leader-keys
     "j" '(:ignore t :which-key "+janet")
     "jb" '(ijanet-eval-buffer :which-key "eval buffer")
@@ -722,6 +722,11 @@ folder, otherwise delete a word"
 (global-display-line-numbers-mode 1)
 (setq global-display-line-numbers 'relative)
 (setq display-line-numbers 'relative)
+
+;;;--------Projectile-----------
+(straight-use-package 'projectile)
+(projectile-mode +1)
+(define-key projectile-mode-map (kbd "C-c C-p") 'projectile-command-map)
 
 (provide 'ínit)
 ;;; init.el ends here
