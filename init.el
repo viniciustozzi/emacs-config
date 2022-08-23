@@ -446,6 +446,7 @@ folder, otherwise delete a word"
 	 (rust-mode . lsp)
 	 (c-mode . lsp)
 	 (go-mode . lsp)
+	 (lua-mode . lsp)
          ;; if you want which-key integration
          (lsp-mode . lsp-enable-which-key-integration))
   :commands lsp)
@@ -680,8 +681,6 @@ folder, otherwise delete a word"
 (straight-use-package 'go-translate)
 (require 'go-translate)
 
-(require 'go-translate)
-
 (setq gts-translate-list '(("de" "en")))
 
 (setq gts-default-translator
@@ -714,6 +713,7 @@ folder, otherwise delete a word"
 
 ;;;---------LUA-------------
 (straight-use-package 'lua-mode)
+(setq lsp-clients-lua-lsp-server-install-dir "/opt/homebrew/bin//lua-language-server")
 
 (use-package pico8-mode
   :straight (:type git :host github :repo "Kaali/pico8-mode"))
