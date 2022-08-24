@@ -427,6 +427,10 @@ folder, otherwise delete a word"
     "os" '(org-schedule :which-key "schedule")
     "od" '(org-schedule :which-key "deadline"))
   (leader-keys
+    "p" '(:ignore t :which-key "+projectile")
+    "pf" '(projectile-find-file :which-key "find file in project")
+    "pd" '(projectile-find-dir :which-key "find dir in project"))
+  (leader-keys
     "v" '(:ignore t :which-key "vterm")
     "vv" '(vterm :which-key "open vterm on other window")
     "vo" '(vterm-other-window :which-key "open vterm in other window")))
