@@ -429,7 +429,10 @@ folder, otherwise delete a word"
   (leader-keys
     "p" '(:ignore t :which-key "+projectile")
     "pf" '(projectile-find-file :which-key "find file in project")
-    "pd" '(projectile-find-dir :which-key "find dir in project"))
+    "pd" '(projectile-find-dir :which-key "find dir in project")
+    "pb" '(projectile-switch-to-buffer :which-key "find buffer in project")
+    "pv" '(projectile-run-vterm :which-key "project vterm")
+    "ps" '(projectile-switch-project :which-key "switch to project"))
   (leader-keys
     "v" '(:ignore t :which-key "vterm")
     "vv" '(vterm :which-key "open vterm on other window")
