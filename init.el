@@ -372,6 +372,7 @@ folder, otherwise delete a word"
   (leader-keys
     "e" '(:ignore t :which-key "Eval")
     "ee" '(cider-eval-last-sexp :which-key "Eval last s-exp")
+    "ed" '(cider-eval-defun-at-point :which-key "Eval function")
     "eb" '(cider-eval-buffer :which-key "Eval buffer")
     "ea" '(cider-eval-all-files :which-key "Eval all files"))
   (leader-keys
