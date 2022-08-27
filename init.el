@@ -637,9 +637,9 @@ folder, otherwise delete a word"
 (use-package consult-notes
   :straight (:type git :host github :repo "mclear-tools/consult-notes")
   :commands (consult-notes
-             consult-notes-search-in-all-notes
-             consult-notes-org-roam-find-node
-             consult-notes-org-roam-find-node-relation)
+             consult-notes-search-in-all-notes)
+             ;consult-notes-org-roam-find-node
+             ;consult-notes-org-roam-find-node-relation)
   :config (setq consult-notes-sources '(("Notes" ?d "~/notes"))))
 
 
@@ -709,14 +709,16 @@ folder, otherwise delete a word"
 ;;;---------OBSIDIAN----------
 (use-package obsidian
   :straight (:type git :host github :repo "licht1stein/obsidian.el")
-  :config (obsidian-specify-path "~/notes/Vault/")
-  ;:custom
-  ;(obsidian-inbox-directory "Inbox")
-  :bind (:map obsidian-mode-map
-		;; Replace C-c C-o with Obsidian.el's implementation. It's ok to use another key binding.
-		("C-c C-o" . obsidian-follow-link-at-point)
-		;; If you prefer you can use `obsidian-insert-wikilink'
-		("C-c C-l" . obsidian-insert-wikilink)))
+  :ensure t
+  :demand t
+  :config
+  (obsidian-specify-path "~/notes")
+  (global-obsidian-mode t)
+  :custom
+  (obsidian-inbox-directory "inbox"))
+
+;;Highlight source code blocks in markdown files
+(setq markdown-fontify-code-blocks-natively t)
 
 ;;;---------LUA-------------
 (straight-use-package 'lua-mode)
