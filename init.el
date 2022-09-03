@@ -397,7 +397,8 @@ folder, otherwise delete a word"
     "sa" '(consult-org-agenda :which-key "agenda")
     "sn" '(consult-notes :which-key "notes")
     "sm" '(consult-bookmark :which-key "bookmark")
-    "st" '(consult-theme :which-key "themes"))
+    "st" '(consult-theme :which-key "themes")
+    "sp" '(consult-project-buffer :which-key "themes"))
   (leader-keys
     "m" '(:ignore t :which-key "+bookmark")
     "ma" '(bookmark-set :which-key "add")
