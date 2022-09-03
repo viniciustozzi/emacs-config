@@ -269,8 +269,6 @@ folder, otherwise delete a word"
 ;; Set up Orderless for better fuzzy matching
 (require 'orderless)
 (customize-set-variable 'completion-styles '(orderless))
-(customize-set-variable 'completion-category-overrides '((file (styles . (partial-completion)))))
-
 ;;; Embark
 (require 'embark)
 (require 'embark-consult)
@@ -738,6 +736,17 @@ folder, otherwise delete a word"
 (projectile-mode +1)
 (define-key projectile-mode-map (kbd "C-c C-p") 'projectile-command-map)
 
+;;;---------NotMuch-------------
+(use-package notmuch
+  :ensure t
+  :defer t)
+
+(setq message-kill-buffer-on-exit t)
+
+(shell-command "notmuch search --output=files --format=text0 tag:deleted | xargs -r0 rm")
+(shell-command "offlineimap &")
+
+;------------------------------
 (provide 'ínit)
 ;;; init.el ends here
 (custom-set-variables
