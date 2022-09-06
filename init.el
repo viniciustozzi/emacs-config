@@ -368,11 +368,13 @@ folder, otherwise delete a word"
     "cc" '(recompile :which-key "compile")
     "cr" '(lsp-rename :which-key "rename"))
   (leader-keys
-    "e" '(:ignore t :which-key "Eval")
-    "ee" '(cider-eval-last-sexp :which-key "Eval last s-exp")
-    "ed" '(cider-eval-defun-at-point :which-key "Eval function")
-    "eb" '(cider-eval-buffer :which-key "Eval buffer")
-    "ea" '(cider-eval-all-files :which-key "Eval all files"))
+    "e" '(:ignore t :which-key "+cider")
+    "ee" '(cider-eval-last-sexp :which-key "eval last s-exp")
+    "ed" '(cider-eval-defun-at-point :which-key "eval function")
+    "eb" '(cider-eval-buffer :which-key "eval buffer")
+    "ea" '(cider-eval-all-files :which-key "eval all files")
+    "ep" '(cider-eval-print-last-sexp :which-key "eval print last sexp")
+    "ei" '(cider-inspect-defun-at-point :which-key "inspect func at point"))
   (leader-keys
     "n" '(:ignore t :which-key "+notes")
     "nc" '(denote :which-key "create note")
