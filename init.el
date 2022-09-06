@@ -400,10 +400,9 @@ folder, otherwise delete a word"
     "st" '(consult-theme :which-key "themes")
     "sp" '(consult-project-buffer :which-key "themes"))
   (leader-keys
-    "m" '(:ignore t :which-key "+bookmark")
-    "ma" '(bookmark-set :which-key "add")
-    "md" '(bookmark-delete :which-key "delete")
-    "mf" '(consult-bookmark :which-key "search"))
+    "m" '(:ignore t :which-key "+mail")
+    "mm" '(notmuch :which-key "open mail")
+    "md" '(tag-mail-as-deleted :which-key "mark mail as deleted"))
   (leader-keys
     "j" '(:ignore t :which-key "+janet")
     "jb" '(ijanet-eval-buffer :which-key "eval buffer")
@@ -438,8 +437,13 @@ folder, otherwise delete a word"
     "vv" '(vterm :which-key "open vterm on other window")
     "vo" '(vterm-other-window :which-key "open vterm in other window")))
 
+(defun tag-mail-as-deleted ()
+  "Tag current email as deleted in notmuch."
+  (interactive)
+  (notmuch-tag (list "+deleted" "-inbox")))
 
 (defun dired-notes ()
+  "Open Dired in the ~/notes folder."
   (interactive)
   (dired "~/notes"))
 
@@ -746,6 +750,16 @@ folder, otherwise delete a word"
 
 (shell-command "notmuch search --output=files --format=text0 tag:deleted | xargs -r0 rm")
 (shell-command "offlineimap &")
+
+;;;----------Email------------
+;; (straight-use-package '(mu4e :host github :repo "emacsmirror/mu4e"
+;;                              :files (:defaults "mu4e/*.el")))
+
+;; (setq mu4e-mu-binary (executable-find "mu"))
+;; (setq mu4e-maildir "~/mail")
+;; (setq mu4e-get-mail-command "offlineimap")
+;; (setq mu4e-update-interval 300)
+;; (setq mu4e-attachment-dir "~/Downloads")
 
 ;------------------------------
 (provide 'ínit)
