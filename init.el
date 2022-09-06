@@ -747,6 +747,9 @@ folder, otherwise delete a word"
 (shell-command "notmuch search --output=files --format=text0 tag:deleted | xargs -r0 rm")
 (shell-command "offlineimap &")
 
+;;;---------Sly---------------
+(straight-use-package 'sly)
+
 ;------------------------------
 (provide 'ínit)
 ;;; init.el ends here
