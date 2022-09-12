@@ -197,6 +197,8 @@
 (add-hook 'clojure-mode-hook #'rainbow-delimiters-mode)
 (add-hook 'clojurescript-mode-hook #'rainbow-delimiters-mode)
 
+(global-prettify-symbols-mode 1)
+
 ;;;-------COMPLETION/SEARCHING------------
 
 (straight-use-package 'cape)
@@ -765,6 +767,15 @@ folder, otherwise delete a word"
 
 ;;;---------Sly---------------
 (straight-use-package 'sly)
+
+;;;---------Elfeed------------
+(straight-use-package 'elfeed)
+(setq elfeed-feeds
+      '(("https://www.juxt.pro/blog/rss.xml" clojure programming)
+	("http://planet.clojure.in/atom.xml" clojure programming)
+	("https://blog.michielborkent.nl/atom.xml" clojure programming)
+	("https://rss.dw.com/atom/rss-en-all" news)
+	("https://hnrss.org/frontpage.atom" news programming)))
 
 ;------------------------------
 (provide 'ínit)
