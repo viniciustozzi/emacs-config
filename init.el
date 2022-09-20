@@ -755,6 +755,9 @@ folder, otherwise delete a word"
 (shell-command "notmuch search --output=files --format=text0 tag:deleted | xargs -r0 rm")
 (shell-command "offlineimap &")
 
+;;;---------JSON----------------
+(straight-use-package 'json-mode)
+
 ;;;----------Email------------
 ;; (straight-use-package '(mu4e :host github :repo "emacsmirror/mu4e"
 ;;                              :files (:defaults "mu4e/*.el")))
