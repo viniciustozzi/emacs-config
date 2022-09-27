@@ -437,9 +437,8 @@ folder, otherwise delete a word"
     "pv" '(projectile-run-vterm :which-key "project vterm")
     "ps" '(projectile-switch-project :which-key "switch to project"))
   (leader-keys
-    "v" '(:ignore t :which-key "vterm")
-    "vv" '(vterm :which-key "open vterm on other window")
-    "vo" '(vterm-other-window :which-key "open vterm in other window")))
+    "v" '(:ignore t :which-key "+ehsell")
+    "vv" '(eshell :which-key "open eshell")))
 
 (defun tag-mail-as-deleted ()
   "Tag current email as deleted in notmuch."
@@ -712,7 +711,12 @@ folder, otherwise delete a word"
 (setq nov-text-width 80)
 
 ;;;---------VTERM-------------
-(straight-use-package 'vterm)
+(use-package vterm
+  :commands vterm
+  :config
+  (setq term-prompt-regexp "^[^#$%>\n]*[#$%>] *")
+  (setq vterm-shell "zsh")
+  (setq vterm-max-scrollback 10000))
 
 ;;;---------OBSIDIAN----------
 (use-package obsidian
