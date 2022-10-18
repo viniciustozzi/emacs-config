@@ -565,7 +565,9 @@ folder, otherwise delete a word"
 (straight-use-package 'go-mode)
 (add-hook 'go-mode-hook (lambda () (setq tab-width 4)))
 (add-hook 'go-mode-hook (lambda () (company-mode 0)))
-(add-hook 'clojure-mode-hook #'smartparens-mode)
+(add-hook 'go-mode-hook (lambda () (evil-define-key 'normal go-mode-map (kbd "K") nil)))
+(add-hook 'go-mode-hook #'smartparens-mode)
+
 
 ;;;---------CLOJURE------------
 (straight-use-package 'cider)
