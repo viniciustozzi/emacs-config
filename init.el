@@ -457,12 +457,13 @@ folder, otherwise delete a word"
   (setq lsp-keymap-prefix "C-c l")
   :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
          (clojure-mode . lsp)
-	 (rust-mode . lsp)
-	 (c-mode . lsp)
-	 (go-mode . lsp)
-	 (lua-mode . lsp)
-         ;; if you want which-key integration
-         (lsp-mode . lsp-enable-which-key-integration))
+		 (rust-mode . lsp)
+		 (c-mode . lsp)
+		 (go-mode . lsp)
+		 (lua-mode . lsp)
+		 (nim-mode . lsp)
+		 ;; if you want which-key integration
+		 (lsp-mode . lsp-enable-which-key-integration))
   :commands lsp)
 
 (use-package lsp-ui :commands lsp-ui-mode)
@@ -785,6 +786,37 @@ folder, otherwise delete a word"
 	("https://blog.michielborkent.nl/atom.xml" clojure programming)
 	("https://rss.dw.com/atom/rss-en-all" news)
 	("https://hnrss.org/frontpage.atom" news programming)))
+
+;;;---------Nim-------------
+(straight-use-package 'nim-mode)
+(setq nimsuggest-path "~/.nimble/bin/nimsuggest")
+
+(defun my--init-nim-mode ()
+  "Local init function for `nim-mode'."
+
+  ;; Make files in the nimble folder read only by default.
+  ;; This can prevent to edit them by accident.
+  (when (string-match "/\.nimble/" (or (buffer-file-name) "")) (read-only-mode 1))
+
+  ;; The following modes are disabled for Nim files just for the case
+  ;; that they are enabled globally.
+  ;; Anything that is based on smie can cause problems.
+  (auto-fill-mode 0)
+  (electric-indent-local-mode 0)
+)
+
+(add-hook 'nim-mode-hook 'my--init-nim-mode)
+(add-hook 'nim-mode-hook #'smartparens-mode)
+
+;;Nim Repl
+(straight-use-package
+ '(inim
+   :type git
+   :host github
+   :repo "serialdev/inim-mode"
+   :config
+   (add-hook inim-mode-hook #'evcxr-minor-mode)
+))
 
 ;------------------------------
 (provide 'ínit)
