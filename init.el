@@ -20,6 +20,8 @@
 ;;;--------General Defaults--------
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 
+(menu-bar-mode t)
+
 ;;Disable backup files
 (setq make-backup-files nil)
 (auto-save-mode 0)
@@ -33,7 +35,7 @@
 (global-auto-revert-mode 1)
 
 ;;Start emacs maximized
-(add-hook 'window-setup-hook 'toggle-frame-maximized t)
+;;(add-hook 'window-setup-hook 'toggle-frame-maximized t)
 
 ;; Use "y" and "n" to confirm/negate prompt instead of "yes" and "no"
 ;; Using `advice' here to make it easy to reverse in custom
@@ -792,9 +794,9 @@ folder, otherwise delete a word"
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   '())
- '(ignored-local-variable-values '((cider-shadow-cljs-default-options . "app"))))
+ '(custom-safe-themes 'nil)
+ '(ignored-local-variable-values '((cider-shadow-cljs-default-options . "app")))
+ '(warning-suppress-types '(((unlock-file)))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
